@@ -1,12 +1,12 @@
 <template>
 	<div id="app">		
-		<div>Counters</div>
+		<div>{{label}}</div>
 		<div class="counter">
-			<div>Sketchy Moves</div>
+			<div>{{counter1}}</div>
 			<Roller :text='nums["num0"]'></Roller>
 		</div>
 		<div class="counter">
-			<div>Bad Stops</div>
+			<div>{{counter2}}</div>
 			<Roller :text='nums["num1"]'></Roller>
 		</div>
 	</div>
@@ -27,7 +27,10 @@ export default {
 			nums: {
 				num0: "00",
 				num1: "00"
-			}
+			},
+			counter1: "",
+			counter2: "",
+			label: "Counters"
 		}
 	},
 	mounted () {		
@@ -59,7 +62,11 @@ export default {
 					$this.nums["num"+msg_data.counter] = msg_data.val
 					$this.sub(msg_data.counter)
 					console.log('-')
-				} 
+				} else if(msg_data.op == 'labels') {
+						$this.counter1 = msg_data.counter1
+						$this.counter2 = msg_data.counter2
+						$this.label = msg_data.label
+				}
 			}
 
 			this.connection.onopen = function() {				
