@@ -1,13 +1,15 @@
 <template>
 	<div id="app">		
-		<div>{{label}}</div>
-		<div class="counter">
-			<div>{{counter1}}</div>
-			<Roller :text='nums["num0"]'></Roller>
-		</div>
-		<div class="counter">
-			<div>{{counter2}}</div>
-			<Roller :text='nums["num1"]'></Roller>
+		<div class="title">{{label}}</div>
+		<div class="counters">
+			<div class="counter">
+				<div class="label">{{counter1}}</div>
+				<Roller :text='nums["num0"]'></Roller>
+			</div>
+			<div class="counter">
+				<div class="label">{{counter2}}</div>
+				<Roller :text='nums["num1"]'></Roller>
+			</div>
 		</div>
 	</div>
 </template>
@@ -98,6 +100,16 @@ body {
 	color: #fff;
 	margin-top: 60px;
 	font-size: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	text-shadow: 0px 0px 12px rgba(0,0,0,0.82);
+}
+
+.counters {
+	display: flex;
 }
 
 .counter {
@@ -105,10 +117,26 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-	line-height: 11px;
-    margin-top: 10px;
+	line-height: 11px;    
+	margin: 10px 15px 0 15px;
 
-	.roller {}
+	.roller {
+		font-size: 2em;
+		position: relative;
+		border: 1px solid;
+		border-radius: 50%;
+		height: 239px;
+		padding: 52px;
+
+		li {
+			padding: 0 10px;
+		}
+	}
+
+	.label {
+		position: relative;
+		top: 154px;
+	}
 }
 
 @font-face {
